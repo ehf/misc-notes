@@ -1,0 +1,404 @@
+
+# example use of 'yum --downloadonly' vs 'yumdownloader' utility 
+#
+
+# 'yum --downloadonly' is stock yum
+# 'yumdownloader' is part of yum-utils package (install yum-utils for this utility)
+
+##
+## installation of 'yum-utils' package 
+##
+[ehf@instance-1 ~]$ sudo !!
+sudo yum install yum-utils 
+Loaded plugins: fastestmirror
+Determining fastest mirrors
+epel/x86_64/metalink                                                                                                                                                                                       |  14 kB  00:00:00     
+ * base: la.mirrors.clouvider.net
+ * epel: mirror.prgmr.com
+ * extras: repos.lax.layerhost.com
+ * updates: centos.mirror.ndchost.com
+base                                                                                                                                                                                                       | 3.6 kB  00:00:00     
+epel                                                                                                                                                                                                       | 4.7 kB  00:00:00     
+extras                                                                                                                                                                                                     | 2.9 kB  00:00:00     
+google-cloud-sdk                                                                                                                                                                                           | 1.4 kB  00:00:00     
+google-compute-engine                                                                                                                                                                                      | 1.4 kB  00:00:00     
+updates                                                                                                                                                                                                    | 2.9 kB  00:00:00     
+(1/9): base/7/x86_64/group_gz                                                                                                                                                                              | 153 kB  00:00:00     
+(2/9): base/7/x86_64/primary_db                                                                                                                                                                            | 6.1 MB  00:00:00     
+(3/9): epel/x86_64/group_gz                                                                                                                                                                                |  96 kB  00:00:00     
+(4/9): epel/x86_64/updateinfo                                                                                                                                                                              | 1.0 MB  00:00:00     
+(5/9): extras/7/x86_64/primary_db                                                                                                                                                                          | 243 kB  00:00:00     
+(6/9): epel/x86_64/primary_db                                                                                                                                                                              | 7.0 MB  00:00:00     
+(7/9): google-cloud-sdk/primary                                                                                                                                                                            | 261 kB  00:00:00     
+(8/9): google-compute-engine/primary                                                                                                                                                                       | 3.8 kB  00:00:00     
+(9/9): updates/7/x86_64/primary_db                                                                                                                                                                         |  12 MB  00:00:01     
+google-cloud-sdk                                                                                                                                                                                                        1943/1943
+google-compute-engine                                                                                                                                                                                                       10/10
+Resolving Dependencies
+--> Running transaction check
+---> Package yum-utils.noarch 0:1.1.31-54.el7_8 will be installed
+--> Processing Dependency: python-kitchen for package: yum-utils-1.1.31-54.el7_8.noarch
+--> Processing Dependency: libxml2-python for package: yum-utils-1.1.31-54.el7_8.noarch
+--> Running transaction check
+---> Package libxml2-python.x86_64 0:2.9.1-6.el7_9.6 will be installed
+---> Package python-kitchen.noarch 0:1.1.1-5.el7 will be installed
+--> Processing Dependency: python-chardet for package: python-kitchen-1.1.1-5.el7.noarch
+--> Running transaction check
+---> Package python-chardet.noarch 0:2.2.1-3.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+==================================================================================================================================================================================================================================
+ Package                                                   Arch                                              Version                                                     Repository                                          Size
+==================================================================================================================================================================================================================================
+Installing:
+ yum-utils                                                 noarch                                            1.1.31-54.el7_8                                             base                                               122 k
+Installing for dependencies:
+ libxml2-python                                            x86_64                                            2.9.1-6.el7_9.6                                             updates                                            247 k
+ python-chardet                                            noarch                                            2.2.1-3.el7                                                 base                                               227 k
+ python-kitchen                                            noarch                                            1.1.1-5.el7                                                 base                                               267 k
+
+Transaction Summary
+==================================================================================================================================================================================================================================
+Install  1 Package (+3 Dependent packages)
+
+Total download size: 863 k
+Installed size: 4.3 M
+Is this ok [y/d/N]: y
+Downloading packages:
+(1/4): python-chardet-2.2.1-3.el7.noarch.rpm                                                                                                                                                               | 227 kB  00:00:00     
+(2/4): yum-utils-1.1.31-54.el7_8.noarch.rpm                                                                                                                                                                | 122 kB  00:00:00     
+(3/4): python-kitchen-1.1.1-5.el7.noarch.rpm                                                                                                                                                               | 267 kB  00:00:00     
+(4/4): libxml2-python-2.9.1-6.el7_9.6.x86_64.rpm                                                                                                                                                           | 247 kB  00:00:00     
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                                                                             1.6 MB/s | 863 kB  00:00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : python-chardet-2.2.1-3.el7.noarch                                                                                                                                                                              1/4 
+  Installing : python-kitchen-1.1.1-5.el7.noarch                                                                                                                                                                              2/4 
+  Installing : libxml2-python-2.9.1-6.el7_9.6.x86_64                                                                                                                                                                          3/4 
+  Installing : yum-utils-1.1.31-54.el7_8.noarch                                                                                                                                                                               4/4 
+  Verifying  : python-kitchen-1.1.1-5.el7.noarch                                                                                                                                                                              1/4 
+  Verifying  : yum-utils-1.1.31-54.el7_8.noarch                                                                                                                                                                               2/4 
+  Verifying  : libxml2-python-2.9.1-6.el7_9.6.x86_64                                                                                                                                                                          3/4 
+  Verifying  : python-chardet-2.2.1-3.el7.noarch                                                                                                                                                                              4/4 
+
+Installed:
+  yum-utils.noarch 0:1.1.31-54.el7_8                                                                                                                                                                                              
+
+Dependency Installed:
+  libxml2-python.x86_64 0:2.9.1-6.el7_9.6                                      python-chardet.noarch 0:2.2.1-3.el7                                      python-kitchen.noarch 0:1.1.1-5.el7                                     
+
+Complete!
+[ehf@instance-1 ~]$ 
+
+
+
+##
+##'yum --downloadonly' will download packages and dependencies 
+##
+[ehf@instance-1 ~]$ mkdir yum-download
+[ehf@instance-1 ~]$ pwd
+/home/ehf
+[ehf@instance-1 ~]$ set -o vi 
+[ehf@instance-1 ~]$ sudo yum install --downloadonly --downloaddir=/home/ehf/yum-download/ ansible 
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: la.mirrors.clouvider.net
+ * epel: mirror.prgmr.com
+ * extras: repos.lax.layerhost.com
+ * updates: centos.mirror.ndchost.com
+Resolving Dependencies
+--> Running transaction check
+---> Package ansible.noarch 0:2.9.25-1.el7 will be installed
+--> Processing Dependency: PyYAML for package: ansible-2.9.25-1.el7.noarch
+--> Processing Dependency: python-httplib2 for package: ansible-2.9.25-1.el7.noarch
+--> Processing Dependency: python-jinja2 for package: ansible-2.9.25-1.el7.noarch
+--> Processing Dependency: python-paramiko for package: ansible-2.9.25-1.el7.noarch
+--> Processing Dependency: python-setuptools for package: ansible-2.9.25-1.el7.noarch
+--> Processing Dependency: python-six for package: ansible-2.9.25-1.el7.noarch
+--> Processing Dependency: python2-cryptography for package: ansible-2.9.25-1.el7.noarch
+--> Processing Dependency: python2-jmespath for package: ansible-2.9.25-1.el7.noarch
+--> Processing Dependency: sshpass for package: ansible-2.9.25-1.el7.noarch
+--> Running transaction check
+---> Package PyYAML.x86_64 0:3.10-11.el7 will be installed
+--> Processing Dependency: libyaml-0.so.2()(64bit) for package: PyYAML-3.10-11.el7.x86_64
+---> Package python-jinja2.noarch 0:2.7.2-4.el7 will be installed
+--> Processing Dependency: python-babel >= 0.8 for package: python-jinja2-2.7.2-4.el7.noarch
+--> Processing Dependency: python-markupsafe for package: python-jinja2-2.7.2-4.el7.noarch
+---> Package python-paramiko.noarch 0:2.1.1-9.el7 will be installed
+--> Processing Dependency: python2-pyasn1 for package: python-paramiko-2.1.1-9.el7.noarch
+---> Package python-setuptools.noarch 0:0.9.8-7.el7 will be installed
+--> Processing Dependency: python-backports-ssl_match_hostname for package: python-setuptools-0.9.8-7.el7.noarch
+---> Package python-six.noarch 0:1.9.0-2.el7 will be installed
+---> Package python2-cryptography.x86_64 0:1.7.2-2.el7 will be installed
+--> Processing Dependency: python-idna >= 2.0 for package: python2-cryptography-1.7.2-2.el7.x86_64
+--> Processing Dependency: python-cffi >= 1.4.1 for package: python2-cryptography-1.7.2-2.el7.x86_64
+--> Processing Dependency: python-ipaddress for package: python2-cryptography-1.7.2-2.el7.x86_64
+--> Processing Dependency: python-enum34 for package: python2-cryptography-1.7.2-2.el7.x86_64
+--> Processing Dependency: openssl for package: python2-cryptography-1.7.2-2.el7.x86_64
+---> Package python2-httplib2.noarch 0:0.18.1-3.el7 will be installed
+---> Package python2-jmespath.noarch 0:0.9.4-2.el7 will be installed
+---> Package sshpass.x86_64 0:1.06-2.el7 will be installed
+--> Running transaction check
+---> Package libyaml.x86_64 0:0.1.4-11.el7_0 will be installed
+---> Package openssl.x86_64 1:1.0.2k-22.el7_9 will be installed
+--> Processing Dependency: make for package: 1:openssl-1.0.2k-22.el7_9.x86_64
+---> Package python-babel.noarch 0:0.9.6-8.el7 will be installed
+---> Package python-backports-ssl_match_hostname.noarch 0:3.5.0.1-1.el7 will be installed
+--> Processing Dependency: python-backports for package: python-backports-ssl_match_hostname-3.5.0.1-1.el7.noarch
+---> Package python-cffi.x86_64 0:1.6.0-5.el7 will be installed
+--> Processing Dependency: python-pycparser for package: python-cffi-1.6.0-5.el7.x86_64
+---> Package python-enum34.noarch 0:1.0.4-1.el7 will be installed
+---> Package python-idna.noarch 0:2.4-1.el7 will be installed
+---> Package python-ipaddress.noarch 0:1.0.16-2.el7 will be installed
+---> Package python-markupsafe.x86_64 0:0.11-10.el7 will be installed
+---> Package python2-pyasn1.noarch 0:0.1.9-7.el7 will be installed
+--> Running transaction check
+---> Package make.x86_64 1:3.82-24.el7 will be installed
+---> Package python-backports.x86_64 0:1.0-8.el7 will be installed
+---> Package python-pycparser.noarch 0:2.14-1.el7 will be installed
+--> Processing Dependency: python-ply for package: python-pycparser-2.14-1.el7.noarch
+--> Running transaction check
+---> Package python-ply.noarch 0:3.4-11.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+==================================================================================================================================================================================================================================
+ Package                                                                  Arch                                        Version                                                  Repository                                    Size
+==================================================================================================================================================================================================================================
+Installing:
+ ansible                                                                  noarch                                      2.9.25-1.el7                                             epel                                          17 M
+Installing for dependencies:
+ PyYAML                                                                   x86_64                                      3.10-11.el7                                              base                                         153 k
+ libyaml                                                                  x86_64                                      0.1.4-11.el7_0                                           base                                          55 k
+ make                                                                     x86_64                                      1:3.82-24.el7                                            base                                         421 k
+ openssl                                                                  x86_64                                      1:1.0.2k-22.el7_9                                        updates                                      494 k
+ python-babel                                                             noarch                                      0.9.6-8.el7                                              base                                         1.4 M
+ python-backports                                                         x86_64                                      1.0-8.el7                                                base                                         5.8 k
+ python-backports-ssl_match_hostname                                      noarch                                      3.5.0.1-1.el7                                            base                                          13 k
+ python-cffi                                                              x86_64                                      1.6.0-5.el7                                              base                                         218 k
+ python-enum34                                                            noarch                                      1.0.4-1.el7                                              base                                          52 k
+ python-idna                                                              noarch                                      2.4-1.el7                                                base                                          94 k
+ python-ipaddress                                                         noarch                                      1.0.16-2.el7                                             base                                          34 k
+ python-jinja2                                                            noarch                                      2.7.2-4.el7                                              base                                         519 k
+ python-markupsafe                                                        x86_64                                      0.11-10.el7                                              base                                          25 k
+ python-paramiko                                                          noarch                                      2.1.1-9.el7                                              base                                         269 k
+ python-ply                                                               noarch                                      3.4-11.el7                                               base                                         123 k
+ python-pycparser                                                         noarch                                      2.14-1.el7                                               base                                         104 k
+ python-setuptools                                                        noarch                                      0.9.8-7.el7                                              base                                         397 k
+ python-six                                                               noarch                                      1.9.0-2.el7                                              base                                          29 k
+ python2-cryptography                                                     x86_64                                      1.7.2-2.el7                                              base                                         502 k
+ python2-httplib2                                                         noarch                                      0.18.1-3.el7                                             epel                                         125 k
+ python2-jmespath                                                         noarch                                      0.9.4-2.el7                                              epel                                          41 k
+ python2-pyasn1                                                           noarch                                      0.1.9-7.el7                                              base                                         100 k
+ sshpass                                                                  x86_64                                      1.06-2.el7                                               extras                                        21 k
+
+Transaction Summary
+==================================================================================================================================================================================================================================
+Install  1 Package (+23 Dependent packages)
+
+Total download size: 22 M
+Installed size: 124 M
+Background downloading packages, then exiting:
+(1/24): libyaml-0.1.4-11.el7_0.x86_64.rpm                                                                                                                                                                  |  55 kB  00:00:00     
+(2/24): PyYAML-3.10-11.el7.x86_64.rpm                                                                                                                                                                      | 153 kB  00:00:00     
+(3/24): make-3.82-24.el7.x86_64.rpm                                                                                                                                                                        | 421 kB  00:00:00     
+(4/24): python-backports-1.0-8.el7.x86_64.rpm                                                                                                                                                              | 5.8 kB  00:00:00     
+(5/24): python-backports-ssl_match_hostname-3.5.0.1-1.el7.noarch.rpm                                                                                                                                       |  13 kB  00:00:00     
+(6/24): python-cffi-1.6.0-5.el7.x86_64.rpm                                                                                                                                                                 | 218 kB  00:00:00     
+(7/24): python-babel-0.9.6-8.el7.noarch.rpm                                                                                                                                                                | 1.4 MB  00:00:00     
+(8/24): python-enum34-1.0.4-1.el7.noarch.rpm                                                                                                                                                               |  52 kB  00:00:00     
+(9/24): python-ipaddress-1.0.16-2.el7.noarch.rpm                                                                                                                                                           |  34 kB  00:00:00     
+(10/24): python-idna-2.4-1.el7.noarch.rpm                                                                                                                                                                  |  94 kB  00:00:00     
+(11/24): python-markupsafe-0.11-10.el7.x86_64.rpm                                                                                                                                                          |  25 kB  00:00:00     
+(12/24): python-jinja2-2.7.2-4.el7.noarch.rpm                                                                                                                                                              | 519 kB  00:00:00     
+(13/24): python-paramiko-2.1.1-9.el7.noarch.rpm                                                                                                                                                            | 269 kB  00:00:00     
+(14/24): python-ply-3.4-11.el7.noarch.rpm                                                                                                                                                                  | 123 kB  00:00:00     
+(15/24): python-pycparser-2.14-1.el7.noarch.rpm                                                                                                                                                            | 104 kB  00:00:00     
+(16/24): python-six-1.9.0-2.el7.noarch.rpm                                                                                                                                                                 |  29 kB  00:00:00     
+(17/24): python-setuptools-0.9.8-7.el7.noarch.rpm                                                                                                                                                          | 397 kB  00:00:00     
+(18/24): python2-cryptography-1.7.2-2.el7.x86_64.rpm                                                                                                                                                       | 502 kB  00:00:00     
+(19/24): openssl-1.0.2k-22.el7_9.x86_64.rpm                                                                                                                                                                | 494 kB  00:00:00     
+(20/24): ansible-2.9.25-1.el7.noarch.rpm                                                                                                                                                                   |  17 MB  00:00:01     
+(21/24): python2-httplib2-0.18.1-3.el7.noarch.rpm                                                                                                                                                          | 125 kB  00:00:00     
+(22/24): python2-pyasn1-0.1.9-7.el7.noarch.rpm                                                                                                                                                             | 100 kB  00:00:00     
+(23/24): python2-jmespath-0.9.4-2.el7.noarch.rpm                                                                                                                                                           |  41 kB  00:00:00     
+(24/24): sshpass-1.06-2.el7.x86_64.rpm                                                                                                                                                                     |  21 kB  00:00:00     
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                                                                              15 MB/s |  22 MB  00:00:01     
+exiting because "Download Only" specified
+[ehf@instance-1 ~]$ ls -rlth 
+total 4.0K
+drwxrwxr-x. 2 ehf ehf 4.0K Nov 21 23:42 yum-download
+[ehf@instance-1 ~]$ cd yum-download/
+[ehf@instance-1 yum-download]$ ls -rlht 
+total 23M
+-rw-r--r--. 1 root root 1.4M Jul  4  2014 python-babel-0.9.6-8.el7.noarch.rpm
+-rw-r--r--. 1 root root  26K Jul  4  2014 python-markupsafe-0.11-10.el7.x86_64.rpm
+-rw-r--r--. 1 root root 154K Jul  4  2014 PyYAML-3.10-11.el7.x86_64.rpm
+-rw-r--r--. 1 root root  55K Jan 29  2015 libyaml-0.1.4-11.el7_0.x86_64.rpm
+-rw-r--r--. 1 root root 5.8K Mar 14  2015 python-backports-1.0-8.el7.x86_64.rpm
+-rw-r--r--. 1 root root  53K Nov 25  2015 python-enum34-1.0.4-1.el7.noarch.rpm
+-rw-r--r--. 1 root root 105K Nov 25  2015 python-pycparser-2.14-1.el7.noarch.rpm
+-rw-r--r--. 1 root root  29K Nov 25  2015 python-six-1.9.0-2.el7.noarch.rpm
+-rw-r--r--. 1 root root 100K Nov 20  2016 python2-pyasn1-0.1.9-7.el7.noarch.rpm
+-rw-r--r--. 1 root root 218K Nov 20  2016 python-cffi-1.6.0-5.el7.x86_64.rpm
+-rw-r--r--. 1 root root  35K Nov 20  2016 python-ipaddress-1.0.16-2.el7.noarch.rpm
+-rw-r--r--. 1 root root  94K Aug 10  2017 python-idna-2.4-1.el7.noarch.rpm
+-rw-r--r--. 1 root root 123K Aug 10  2017 python-ply-3.4-11.el7.noarch.rpm
+-rw-r--r--. 1 root root 397K Aug 10  2017 python-setuptools-0.9.8-7.el7.noarch.rpm
+-rw-r--r--. 1 root root  22K Sep  7  2017 sshpass-1.06-2.el7.x86_64.rpm
+-rw-r--r--. 1 root root 503K Apr 25  2018 python2-cryptography-1.7.2-2.el7.x86_64.rpm
+-rw-r--r--. 1 root root  13K Apr 25  2018 python-backports-ssl_match_hostname-3.5.0.1-1.el7.noarch.rpm
+-rw-r--r--. 1 root root 269K Nov 20  2018 python-paramiko-2.1.1-9.el7.noarch.rpm
+-rw-r--r--. 1 root root 421K Aug 22  2019 make-3.82-24.el7.x86_64.rpm
+-rw-r--r--. 1 root root 519K Aug 22  2019 python-jinja2-2.7.2-4.el7.noarch.rpm
+-rw-r--r--. 1 root root  42K Apr 23  2020 python2-jmespath-0.9.4-2.el7.noarch.rpm
+-rw-r--r--. 1 root root 126K Jun 19  2020 python2-httplib2-0.18.1-3.el7.noarch.rpm
+-rw-r--r--. 1 root root  18M Aug 21 21:28 ansible-2.9.25-1.el7.noarch.rpm
+-rw-r--r--. 1 root root 494K Oct 15 14:00 openssl-1.0.2k-22.el7_9.x86_64.rpm
+[ehf@instance-1 yum-download]$
+
+
+
+## 
+## 'yumdownloader' will download only package indicated 
+## use '--resolve' option to download dependencies as well 
+##
+[ehf@instance-1 ~]$ mkdir yumdownlaoder
+[ehf@instance-1 ~]$ pwd
+/home/ehf
+[ehf@instance-1 ~]$ sudo yumdownloader --destdir=/home/ehf/yumdownlaoder/ ansible
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: la.mirrors.clouvider.net
+ * epel: mirror.prgmr.com
+ * extras: repos.lax.layerhost.com
+ * updates: centos.mirror.ndchost.com
+ansible-2.9.25-1.el7.noarch.rpm                                                                                                                                                                            |  17 MB  00:00:01     
+[ehf@instance-1 ~]$ 
+[ehf@instance-1 ~]$ ls -rlth yumdownlaoder/
+total 18M
+-rw-r--r--. 1 root root 18M Aug 21 21:28 ansible-2.9.25-1.el7.noarch.rpm
+[ehf@instance-1 ~]$
+[ehf@instance-1 ~]$ sudo yumdownloader --destdir=/home/ehf/yumdownlaoder/ --resolve ansible
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: la.mirrors.clouvider.net
+ * epel: mirror.prgmr.com
+ * extras: repos.lax.layerhost.com
+ * updates: centos.mirror.ndchost.com
+--> Running transaction check
+---> Package ansible.noarch 0:2.9.25-1.el7 will be installed
+--> Processing Dependency: PyYAML for package: ansible-2.9.25-1.el7.noarch
+--> Processing Dependency: python-httplib2 for package: ansible-2.9.25-1.el7.noarch
+--> Processing Dependency: python-jinja2 for package: ansible-2.9.25-1.el7.noarch
+--> Processing Dependency: python-paramiko for package: ansible-2.9.25-1.el7.noarch
+--> Processing Dependency: python-setuptools for package: ansible-2.9.25-1.el7.noarch
+--> Processing Dependency: python-six for package: ansible-2.9.25-1.el7.noarch
+--> Processing Dependency: python2-cryptography for package: ansible-2.9.25-1.el7.noarch
+--> Processing Dependency: python2-jmespath for package: ansible-2.9.25-1.el7.noarch
+--> Processing Dependency: sshpass for package: ansible-2.9.25-1.el7.noarch
+--> Running transaction check
+---> Package PyYAML.x86_64 0:3.10-11.el7 will be installed
+--> Processing Dependency: libyaml-0.so.2()(64bit) for package: PyYAML-3.10-11.el7.x86_64
+---> Package python-jinja2.noarch 0:2.7.2-4.el7 will be installed
+--> Processing Dependency: python-babel >= 0.8 for package: python-jinja2-2.7.2-4.el7.noarch
+--> Processing Dependency: python-markupsafe for package: python-jinja2-2.7.2-4.el7.noarch
+---> Package python-paramiko.noarch 0:2.1.1-9.el7 will be installed
+--> Processing Dependency: python2-pyasn1 for package: python-paramiko-2.1.1-9.el7.noarch
+---> Package python-setuptools.noarch 0:0.9.8-7.el7 will be installed
+--> Processing Dependency: python-backports-ssl_match_hostname for package: python-setuptools-0.9.8-7.el7.noarch
+---> Package python-six.noarch 0:1.9.0-2.el7 will be installed
+---> Package python2-cryptography.x86_64 0:1.7.2-2.el7 will be installed
+--> Processing Dependency: python-idna >= 2.0 for package: python2-cryptography-1.7.2-2.el7.x86_64
+--> Processing Dependency: python-cffi >= 1.4.1 for package: python2-cryptography-1.7.2-2.el7.x86_64
+--> Processing Dependency: python-ipaddress for package: python2-cryptography-1.7.2-2.el7.x86_64
+--> Processing Dependency: python-enum34 for package: python2-cryptography-1.7.2-2.el7.x86_64
+--> Processing Dependency: openssl for package: python2-cryptography-1.7.2-2.el7.x86_64
+---> Package python2-httplib2.noarch 0:0.18.1-3.el7 will be installed
+---> Package python2-jmespath.noarch 0:0.9.4-2.el7 will be installed
+---> Package sshpass.x86_64 0:1.06-2.el7 will be installed
+--> Running transaction check
+---> Package libyaml.x86_64 0:0.1.4-11.el7_0 will be installed
+---> Package openssl.x86_64 1:1.0.2k-22.el7_9 will be installed
+--> Processing Dependency: make for package: 1:openssl-1.0.2k-22.el7_9.x86_64
+---> Package python-babel.noarch 0:0.9.6-8.el7 will be installed
+---> Package python-backports-ssl_match_hostname.noarch 0:3.5.0.1-1.el7 will be installed
+--> Processing Dependency: python-backports for package: python-backports-ssl_match_hostname-3.5.0.1-1.el7.noarch
+---> Package python-cffi.x86_64 0:1.6.0-5.el7 will be installed
+--> Processing Dependency: python-pycparser for package: python-cffi-1.6.0-5.el7.x86_64
+---> Package python-enum34.noarch 0:1.0.4-1.el7 will be installed
+---> Package python-idna.noarch 0:2.4-1.el7 will be installed
+---> Package python-ipaddress.noarch 0:1.0.16-2.el7 will be installed
+---> Package python-markupsafe.x86_64 0:0.11-10.el7 will be installed
+---> Package python2-pyasn1.noarch 0:0.1.9-7.el7 will be installed
+--> Running transaction check
+---> Package make.x86_64 1:3.82-24.el7 will be installed
+---> Package python-backports.x86_64 0:1.0-8.el7 will be installed
+---> Package python-pycparser.noarch 0:2.14-1.el7 will be installed
+--> Processing Dependency: python-ply for package: python-pycparser-2.14-1.el7.noarch
+--> Running transaction check
+---> Package python-ply.noarch 0:3.4-11.el7 will be installed
+--> Finished Dependency Resolution
+(1/23): libyaml-0.1.4-11.el7_0.x86_64.rpm                                                                                                                                                                  |  55 kB  00:00:00     
+(2/23): PyYAML-3.10-11.el7.x86_64.rpm                                                                                                                                                                      | 153 kB  00:00:00     
+(3/23): make-3.82-24.el7.x86_64.rpm                                                                                                                                                                        | 421 kB  00:00:00     
+(4/23): python-backports-1.0-8.el7.x86_64.rpm                                                                                                                                                              | 5.8 kB  00:00:00     
+(5/23): python-backports-ssl_match_hostname-3.5.0.1-1.el7.noarch.rpm                                                                                                                                       |  13 kB  00:00:00     
+(6/23): python-babel-0.9.6-8.el7.noarch.rpm                                                                                                                                                                | 1.4 MB  00:00:00     
+(7/23): python-cffi-1.6.0-5.el7.x86_64.rpm                                                                                                                                                                 | 218 kB  00:00:00     
+(8/23): python-enum34-1.0.4-1.el7.noarch.rpm                                                                                                                                                               |  52 kB  00:00:00     
+(9/23): python-ipaddress-1.0.16-2.el7.noarch.rpm                                                                                                                                                           |  34 kB  00:00:00     
+(10/23): python-idna-2.4-1.el7.noarch.rpm                                                                                                                                                                  |  94 kB  00:00:00     
+(11/23): python-markupsafe-0.11-10.el7.x86_64.rpm                                                                                                                                                          |  25 kB  00:00:00     
+(12/23): python-jinja2-2.7.2-4.el7.noarch.rpm                                                                                                                                                              | 519 kB  00:00:00     
+(13/23): python-paramiko-2.1.1-9.el7.noarch.rpm                                                                                                                                                            | 269 kB  00:00:00     
+(14/23): python-ply-3.4-11.el7.noarch.rpm                                                                                                                                                                  | 123 kB  00:00:00     
+(15/23): python-pycparser-2.14-1.el7.noarch.rpm                                                                                                                                                            | 104 kB  00:00:00     
+(16/23): python-setuptools-0.9.8-7.el7.noarch.rpm                                                                                                                                                          | 397 kB  00:00:00     
+(17/23): python-six-1.9.0-2.el7.noarch.rpm                                                                                                                                                                 |  29 kB  00:00:00     
+(18/23): python2-cryptography-1.7.2-2.el7.x86_64.rpm                                                                                                                                                       | 502 kB  00:00:00     
+(19/23): openssl-1.0.2k-22.el7_9.x86_64.rpm                                                                                                                                                                | 494 kB  00:00:00     
+(20/23): python2-httplib2-0.18.1-3.el7.noarch.rpm                                                                                                                                                          | 125 kB  00:00:00     
+(21/23): python2-pyasn1-0.1.9-7.el7.noarch.rpm                                                                                                                                                             | 100 kB  00:00:00     
+(22/23): python2-jmespath-0.9.4-2.el7.noarch.rpm                                                                                                                                                           |  41 kB  00:00:00     
+(23/23): sshpass-1.06-2.el7.x86_64.rpm                                                                                                                                                                     |  21 kB  00:00:00     
+[ehf@instance-1 ~]$ ls -rlth /home/ehf/yumdownlaoder/
+total 23M
+-rw-r--r--. 1 root root 1.4M Jul  4  2014 python-babel-0.9.6-8.el7.noarch.rpm
+-rw-r--r--. 1 root root  26K Jul  4  2014 python-markupsafe-0.11-10.el7.x86_64.rpm
+-rw-r--r--. 1 root root 154K Jul  4  2014 PyYAML-3.10-11.el7.x86_64.rpm
+-rw-r--r--. 1 root root  55K Jan 29  2015 libyaml-0.1.4-11.el7_0.x86_64.rpm
+-rw-r--r--. 1 root root 5.8K Mar 14  2015 python-backports-1.0-8.el7.x86_64.rpm
+-rw-r--r--. 1 root root  53K Nov 25  2015 python-enum34-1.0.4-1.el7.noarch.rpm
+-rw-r--r--. 1 root root 105K Nov 25  2015 python-pycparser-2.14-1.el7.noarch.rpm
+-rw-r--r--. 1 root root  29K Nov 25  2015 python-six-1.9.0-2.el7.noarch.rpm
+-rw-r--r--. 1 root root 100K Nov 20  2016 python2-pyasn1-0.1.9-7.el7.noarch.rpm
+-rw-r--r--. 1 root root 218K Nov 20  2016 python-cffi-1.6.0-5.el7.x86_64.rpm
+-rw-r--r--. 1 root root  35K Nov 20  2016 python-ipaddress-1.0.16-2.el7.noarch.rpm
+-rw-r--r--. 1 root root  94K Aug 10  2017 python-idna-2.4-1.el7.noarch.rpm
+-rw-r--r--. 1 root root 123K Aug 10  2017 python-ply-3.4-11.el7.noarch.rpm
+-rw-r--r--. 1 root root 397K Aug 10  2017 python-setuptools-0.9.8-7.el7.noarch.rpm
+-rw-r--r--. 1 root root  22K Sep  7  2017 sshpass-1.06-2.el7.x86_64.rpm
+-rw-r--r--. 1 root root 503K Apr 25  2018 python2-cryptography-1.7.2-2.el7.x86_64.rpm
+-rw-r--r--. 1 root root  13K Apr 25  2018 python-backports-ssl_match_hostname-3.5.0.1-1.el7.noarch.rpm
+-rw-r--r--. 1 root root 269K Nov 20  2018 python-paramiko-2.1.1-9.el7.noarch.rpm
+-rw-r--r--. 1 root root 421K Aug 22  2019 make-3.82-24.el7.x86_64.rpm
+-rw-r--r--. 1 root root 519K Aug 22  2019 python-jinja2-2.7.2-4.el7.noarch.rpm
+-rw-r--r--. 1 root root  42K Apr 23  2020 python2-jmespath-0.9.4-2.el7.noarch.rpm
+-rw-r--r--. 1 root root 126K Jun 19  2020 python2-httplib2-0.18.1-3.el7.noarch.rpm
+-rw-r--r--. 1 root root  18M Aug 21 21:28 ansible-2.9.25-1.el7.noarch.rpm
+-rw-r--r--. 1 root root 494K Oct 15 14:00 openssl-1.0.2k-22.el7_9.x86_64.rpm
+[ehf@instance-1 ~]$
+
+
+
+### 
+
+
