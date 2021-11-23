@@ -1,0 +1,106 @@
+# 11/22/2021 
+
+[ehf@elpaso Downloads]$ mkdir defender-el7
+[ehf@elpaso Downloads]$ cd defender-el7/
+[ehf@elpaso defender-el7]$ pwd
+/home/ehf/Downloads/defender-el7
+[ehf@elpaso defender-el7]$ 
+[ehf@elpaso defender-el7]$ sudo yum install --downloadonly --downloaddir=/home/ehf/Downloads/defender-el7/ mdatp
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: la.mirrors.clouvider.net
+ * extras: mirrors.cat.pdx.edu
+ * updates: or-mirror.iwebfusion.net
+packages-microsoft-com-prod                                                                                                                                                                                                                                       | 3.0 kB  00:00:00
+packages-microsoft-com-prod/primary_db                                                                                                                                                                                                                            | 519 kB  00:00:01
+Resolving Dependencies
+--> Running transaction check
+---> Package mdatp.x86_64 0:101.47.76-1 will be installed
+--> Processing Dependency: libatomic for package: mdatp-101.47.76-1.x86_64
+--> Processing Dependency: mde-netfilter for package: mdatp-101.47.76-1.x86_64
+--> Processing Dependency: policycoreutils-python for package: mdatp-101.47.76-1.x86_64
+--> Running transaction check
+---> Package libatomic.x86_64 0:4.8.5-44.el7 will be installed
+---> Package mde-netfilter.x86_64 0:100.69.32-1 will be installed
+--> Processing Dependency: libnetfilter_queue for package: mde-netfilter-100.69.32-1.x86_64
+---> Package policycoreutils-python.x86_64 0:2.5-34.el7 will be installed
+--> Processing Dependency: setools-libs >= 3.3.8-4 for package: policycoreutils-python-2.5-34.el7.x86_64
+--> Processing Dependency: libsemanage-python >= 2.5-14 for package: policycoreutils-python-2.5-34.el7.x86_64
+--> Processing Dependency: audit-libs-python >= 2.1.3-4 for package: policycoreutils-python-2.5-34.el7.x86_64
+--> Processing Dependency: python-IPy for package: policycoreutils-python-2.5-34.el7.x86_64
+--> Processing Dependency: libqpol.so.1(VERS_1.4)(64bit) for package: policycoreutils-python-2.5-34.el7.x86_64
+--> Processing Dependency: libqpol.so.1(VERS_1.2)(64bit) for package: policycoreutils-python-2.5-34.el7.x86_64
+--> Processing Dependency: libcgroup for package: policycoreutils-python-2.5-34.el7.x86_64
+--> Processing Dependency: libapol.so.4(VERS_4.0)(64bit) for package: policycoreutils-python-2.5-34.el7.x86_64
+--> Processing Dependency: checkpolicy for package: policycoreutils-python-2.5-34.el7.x86_64
+--> Processing Dependency: libqpol.so.1()(64bit) for package: policycoreutils-python-2.5-34.el7.x86_64
+--> Processing Dependency: libapol.so.4()(64bit) for package: policycoreutils-python-2.5-34.el7.x86_64
+--> Running transaction check
+---> Package audit-libs-python.x86_64 0:2.8.5-4.el7 will be installed
+---> Package checkpolicy.x86_64 0:2.5-8.el7 will be installed
+---> Package libcgroup.x86_64 0:0.41-21.el7 will be installed
+---> Package libnetfilter_queue.x86_64 0:1.0.2-2.el7_2 will be installed
+---> Package libsemanage-python.x86_64 0:2.5-14.el7 will be installed
+---> Package python-IPy.noarch 0:0.75-6.el7 will be installed
+---> Package setools-libs.x86_64 0:3.3.8-4.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=========================================================================================================================================================================================================================================================================================
+ Package                                                                  Arch                                                     Version                                                           Repository                                                                     Size
+=========================================================================================================================================================================================================================================================================================
+Installing:
+ mdatp                                                                    x86_64                                                   101.47.76-1                                                       packages-microsoft-com-prod                                                    52 M
+Installing for dependencies:
+ audit-libs-python                                                        x86_64                                                   2.8.5-4.el7                                                       base                                                                           76 k
+ checkpolicy                                                              x86_64                                                   2.5-8.el7                                                         base                                                                          295 k
+ libatomic                                                                x86_64                                                   4.8.5-44.el7                                                      base                                                                           51 k
+ libcgroup                                                                x86_64                                                   0.41-21.el7                                                       base                                                                           66 k
+ libnetfilter_queue                                                       x86_64                                                   1.0.2-2.el7_2                                                     base                                                                           23 k
+ libsemanage-python                                                       x86_64                                                   2.5-14.el7                                                        base                                                                          113 k
+ mde-netfilter                                                            x86_64                                                   100.69.32-1                                                       packages-microsoft-com-prod                                                    36 k
+ policycoreutils-python                                                   x86_64                                                   2.5-34.el7                                                        base                                                                          457 k
+ python-IPy                                                               noarch                                                   0.75-6.el7                                                        base                                                                           32 k
+ setools-libs                                                             x86_64                                                   3.3.8-4.el7                                                       base                                                                          620 k
+
+Transaction Summary
+=========================================================================================================================================================================================================================================================================================
+Install  1 Package (+10 Dependent packages)
+
+Total download size: 54 M
+Installed size: 188 M
+Background downloading packages, then exiting:
+(1/11): audit-libs-python-2.8.5-4.el7.x86_64.rpm                                                                                                                                                                                                                  |  76 kB  00:00:00
+(2/11): libatomic-4.8.5-44.el7.x86_64.rpm                                                                                                                                                                                                                         |  51 kB  00:00:00
+(3/11): libcgroup-0.41-21.el7.x86_64.rpm                                                                                                                                                                                                                          |  66 kB  00:00:00
+(4/11): checkpolicy-2.5-8.el7.x86_64.rpm                                                                                                                                                                                                                          | 295 kB  00:00:00
+(5/11): libnetfilter_queue-1.0.2-2.el7_2.x86_64.rpm                                                                                                                                                                                                               |  23 kB  00:00:00
+(6/11): libsemanage-python-2.5-14.el7.x86_64.rpm                                                                                                                                                                                                                  | 113 kB  00:00:00
+(7/11): python-IPy-0.75-6.el7.noarch.rpm                                                                                                                                                                                                                          |  32 kB  00:00:00
+(8/11): policycoreutils-python-2.5-34.el7.x86_64.rpm                                                                                                                                                                                                              | 457 kB  00:00:00
+(9/11): setools-libs-3.3.8-4.el7.x86_64.rpm                                                                                                                                                                                                                       | 620 kB  00:00:00
+warning: /home/ehf/Downloads/defender-el7/mde-netfilter_100.69.32.x86_64.rpm: Header V4 RSA/SHA256 Signature, key ID be1229cf: NOKEY==-                                                                                                                ] 987 kB/s | 1.7 MB  00:00:53 ETA
+Public key for mde-netfilter_100.69.32.x86_64.rpm is not installed
+(10/11): mde-netfilter_100.69.32.x86_64.rpm                                                                                                                                                                                                                       |  36 kB  00:00:00
+(11/11): mdatp_101.47.76.x86_64.rpm                                                                                                                                                                                                                               |  52 MB  00:00:23
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                                                                                                                                    2.2 MB/s |  54 MB  00:00:24
+exiting because "Download Only" specified
+[ehf@elpaso defender-el7]$ pwd
+/home/ehf/Downloads/defender-el7
+[ehf@elpaso defender-el7]$ ls -rlth
+total 54M
+-rw-r--r--. 1 root root  33K Jul  3  2014 python-IPy-0.75-6.el7.noarch.rpm
+-rw-r--r--. 1 root root  24K Aug 10  2017 libnetfilter_queue-1.0.2-2.el7_2.x86_64.rpm
+-rw-r--r--. 1 root root 295K Nov 12  2018 checkpolicy-2.5-8.el7.x86_64.rpm
+-rw-r--r--. 1 root root 113K Nov 12  2018 libsemanage-python-2.5-14.el7.x86_64.rpm
+-rw-r--r--. 1 root root 621K Nov 12  2018 setools-libs-3.3.8-4.el7.x86_64.rpm
+-rw-r--r--. 1 root root  77K Aug 22  2019 audit-libs-python-2.8.5-4.el7.x86_64.rpm
+-rw-r--r--. 1 root root  67K Aug 22  2019 libcgroup-0.41-21.el7.x86_64.rpm
+-rw-r--r--. 1 root root 458K Apr  3  2020 policycoreutils-python-2.5-34.el7.x86_64.rpm
+-rw-r--r--. 1 root root  52K Oct 14  2020 libatomic-4.8.5-44.el7.x86_64.rpm
+-rw-r--r--. 1 root root  36K Sep  9 02:20 mde-netfilter_100.69.32.x86_64.rpm
+-rw-r--r--. 1 root root  52M Nov  9 19:33 mdatp_101.47.76.x86_64.rpm
+[ehf@elpaso defender-el7]$
+
