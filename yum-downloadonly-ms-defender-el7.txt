@@ -1,5 +1,12 @@
 # 11/22/2021 
 
+[ehf@elpaso Downloads]$ cat /etc/yum.repos.d/ms-defender-prod-el7.repo
+[packages-microsoft-com-prod]
+name=packages-microsoft-com-prod
+baseurl=https://packages.microsoft.com/rhel/7/prod/
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.microsoft.com/keys/microsoft.asc
 [ehf@elpaso Downloads]$ mkdir defender-el7
 [ehf@elpaso Downloads]$ cd defender-el7/
 [ehf@elpaso defender-el7]$ pwd
