@@ -1,0 +1,123 @@
+## 11/22/2021 
+
+[ehf@locomoco yum.repos.d]$  sudo yum-config-manager --add-repo=https://packages.microsoft.com/config/rhel/8/prod.repo
+Adding repo from: https://packages.microsoft.com/config/rhel/8/prod.repo
+[ehf@locomoco yum.repos.d]$
+[ehf@locomoco yum.repos.d]$ ls -rlth
+total 16K
+-rw-r--r--. 1 root root 2.8K May 25 16:38 almalinux.repo
+-rw-r--r--. 1 root root 1009 May 25 16:38 almalinux-powertools.repo
+-rw-r--r--. 1 root root  989 May 25 16:38 almalinux-ha.repo
+-rw-r--r--. 1 root root  192 Nov 22 18:57 prod.repo
+[ehf@locomoco yum.repos.d]$ sudo mv prod.repo ms-defender-prod-el8.repo
+[ehf@locomoco yum.repos.d]$ cat ms-defender-prod-el8.repo
+[packages-microsoft-com-prod]
+name=packages-microsoft-com-prod
+baseurl=https://packages.microsoft.com/rhel/8/prod/
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.microsoft.com/keys/microsoft.asc
+[ehf@locomoco yum.repos.d]$
+[ehf@locomoco yum.repos.d]$
+[ehf@locomoco yum.repos.d]$
+[ehf@locomoco yum.repos.d]$ cd
+[ehf@locomoco ~]$ mkdir -p Downloads/defender-el8
+[ehf@locomoco ~]$ cd !$
+cd Downloads/defender-el8
+[ehf@locomoco defender-el8]$ pwd
+/home/ehf/Downloads/defender-el8
+[ehf@locomoco defender-el8]$ ls -rlth
+total 0
+[ehf@locomoco defender-el8]$ yum clean all
+0 files removed
+[ehf@locomoco defender-el8]$ sudo yum install --downloadonly --downloaddir=/home/ehf/Downloads/defender-el8/ mdatp
+packages-microsoft-com-prod                                                                                                                                                                                                                              1.3 MB/s | 8.0 MB     00:06
+Last metadata expiration check: 0:00:16 ago on Mon 22 Nov 2021 06:58:24 PM PST.
+Dependencies resolved.
+=========================================================================================================================================================================================================================================================================================
+ Package                                                                 Architecture                                      Version                                                                          Repository                                                              Size
+=========================================================================================================================================================================================================================================================================================
+Installing:
+ mdatp                                                                   x86_64                                            101.47.76-1                                                                      packages-microsoft-com-prod                                             52 M
+Upgrading:
+ chkconfig                                                               x86_64                                            1.19.1-1.el8                                                                     baseos                                                                 197 k
+ platform-python-pip                                                     noarch                                            9.0.3-20.el8                                                                     baseos                                                                 1.7 M
+ policycoreutils                                                         x86_64                                            2.9-16.el8                                                                       baseos                                                                 372 k
+Installing dependencies:
+ checkpolicy                                                             x86_64                                            2.9-1.el8                                                                        baseos                                                                 347 k
+ libatomic                                                               x86_64                                            8.5.0-4.el8_5.alma                                                               baseos                                                                  23 k
+ libnetfilter_queue                                                      x86_64                                            1.0.4-3.el8                                                                      baseos                                                                  31 k
+ mde-netfilter                                                           x86_64                                            100.69.32-1                                                                      packages-microsoft-com-prod                                             36 k
+ policycoreutils-python-utils                                            noarch                                            2.9-16.el8                                                                       baseos                                                                 251 k
+ python3-audit                                                           x86_64                                            3.0-0.17.20191104git1c2f876.el8                                                  baseos                                                                  86 k
+ python3-libsemanage                                                     x86_64                                            2.9-6.el8                                                                        baseos                                                                 126 k
+ python3-pip                                                             noarch                                            9.0.3-20.el8                                                                     appstream                                                               19 k
+ python3-policycoreutils                                                 noarch                                            2.9-16.el8                                                                       baseos                                                                 2.2 M
+ python3-setools                                                         x86_64                                            4.3.0-2.el8                                                                      baseos                                                                 625 k
+ python3-setuptools                                                      noarch                                            39.2.0-6.el8                                                                     baseos                                                                 162 k
+ python36                                                                x86_64                                            3.6.8-38.module_el8.5.0+2569+5c5719bc                                            appstream                                                               18 k
+Enabling module streams:
+ python36                                                                                                                  3.6
+
+Transaction Summary
+=========================================================================================================================================================================================================================================================================================
+Install  13 Packages
+Upgrade   3 Packages
+
+Total download size: 58 M
+YUM will only download packages for the transaction.
+Is this ok [y/N]: y
+Downloading Packages:
+(1/16): libnetfilter_queue-1.0.4-3.el8.x86_64.rpm                                                                                                                                                                                                         74 kB/s |  31 kB     00:00
+(2/16): libatomic-8.5.0-4.el8_5.alma.x86_64.rpm                                                                                                                                                                                                           52 kB/s |  23 kB     00:00
+(3/16): checkpolicy-2.9-1.el8.x86_64.rpm                                                                                                                                                                                                                 436 kB/s | 347 kB     00:00
+(4/16): python3-audit-3.0-0.17.20191104git1c2f876.el8.x86_64.rpm                                                                                                                                                                                         218 kB/s |  86 kB     00:00
+(5/16): python3-libsemanage-2.9-6.el8.x86_64.rpm                                                                                                                                                                                                         1.1 MB/s | 126 kB     00:00
+(6/16): policycoreutils-python-utils-2.9-16.el8.noarch.rpm                                                                                                                                                                                               287 kB/s | 251 kB     00:00
+(7/16): python3-setuptools-39.2.0-6.el8.noarch.rpm                                                                                                                                                                                                       383 kB/s | 162 kB     00:00
+(8/16): python3-setools-4.3.0-2.el8.x86_64.rpm                                                                                                                                                                                                           669 kB/s | 625 kB     00:00
+(9/16): python3-pip-9.0.3-20.el8.noarch.rpm                                                                                                                                                                                                              118 kB/s |  19 kB     00:00
+(10/16): python36-3.6.8-38.module_el8.5.0+2569+5c5719bc.x86_64.rpm                                                                                                                                                                                       151 kB/s |  18 kB     00:00
+(11/16): mde-netfilter_100.69.32.x86_64.rpm                                                                                                                                                                                                               46 kB/s |  36 kB     00:00
+(12/16): python3-policycoreutils-2.9-16.el8.noarch.rpm                                                                                                                                                                                                   1.0 MB/s | 2.2 MB     00:02
+(13/16): chkconfig-1.19.1-1.el8.x86_64.rpm                                                                                                                                                                                                               456 kB/s | 197 kB     00:00
+(14/16): policycoreutils-2.9-16.el8.x86_64.rpm                                                                                                                                                                                                           760 kB/s | 372 kB     00:00
+(15/16): platform-python-pip-9.0.3-20.el8.noarch.rpm                                                                                                                                                                                                     1.4 MB/s | 1.7 MB     00:01
+(16/16): mdatp_101.47.76.x86_64.rpm                                                                                                                                                                                                                      2.4 MB/s |  52 MB     00:21
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                                                                                                                                    2.3 MB/s |  58 MB     00:25
+warning: /home/ehf/Downloads/defender-el8/mdatp_101.47.76.x86_64.rpm: Header V4 RSA/SHA256 Signature, key ID be1229cf: NOKEY
+packages-microsoft-com-prod                                                                                                                                                                                                                              3.7 kB/s | 983  B     00:00
+Importing GPG key 0xBE1229CF:
+ Userid     : "Microsoft (Release signing) <gpgsecurity@microsoft.com>"
+ Fingerprint: BC52 8686 B50D 79E3 39D3 721C EB3E 94AD BE12 29CF
+ From       : https://packages.microsoft.com/keys/microsoft.asc
+Is this ok [y/N]: y
+Key imported successfully
+Complete!
+The downloaded packages were saved in cache until the next successful transaction.
+You can remove cached packages by executing 'yum clean packages'.
+[ehf@locomoco defender-el8]$ pwd
+/home/ehf/Downloads/defender-el8
+[ehf@locomoco defender-el8]$ ls -rlth
+total 59M
+-rw-r--r--. 1 root root  31K Nov 22 18:58 libnetfilter_queue-1.0.4-3.el8.x86_64.rpm
+-rw-r--r--. 1 root root  23K Nov 22 18:58 libatomic-8.5.0-4.el8_5.alma.x86_64.rpm
+-rw-r--r--. 1 root root 347K Nov 22 18:58 checkpolicy-2.9-1.el8.x86_64.rpm
+-rw-r--r--. 1 root root  86K Nov 22 18:58 python3-audit-3.0-0.17.20191104git1c2f876.el8.x86_64.rpm
+-rw-r--r--. 1 root root 127K Nov 22 18:58 python3-libsemanage-2.9-6.el8.x86_64.rpm
+-rw-r--r--. 1 root root 252K Nov 22 18:58 policycoreutils-python-utils-2.9-16.el8.noarch.rpm
+-rw-r--r--. 1 root root 163K Nov 22 18:58 python3-setuptools-39.2.0-6.el8.noarch.rpm
+-rw-r--r--. 1 root root 625K Nov 22 18:58 python3-setools-4.3.0-2.el8.x86_64.rpm
+-rw-r--r--. 1 root root  19K Nov 22 18:58 python3-pip-9.0.3-20.el8.noarch.rpm
+-rw-r--r--. 1 root root  19K Nov 22 18:58 python36-3.6.8-38.module_el8.5.0+2569+5c5719bc.x86_64.rpm
+-rw-r--r--. 1 root root  36K Nov 22 18:58 mde-netfilter_100.69.32.x86_64.rpm
+-rw-r--r--. 1 root root 2.3M Nov 22 18:58 python3-policycoreutils-2.9-16.el8.noarch.rpm
+-rw-r--r--. 1 root root 198K Nov 22 18:58 chkconfig-1.19.1-1.el8.x86_64.rpm
+-rw-r--r--. 1 root root 373K Nov 22 18:58 policycoreutils-2.9-16.el8.x86_64.rpm
+-rw-r--r--. 1 root root 1.7M Nov 22 18:58 platform-python-pip-9.0.3-20.el8.noarch.rpm
+-rw-r--r--. 1 root root  52M Nov 22 18:59 mdatp_101.47.76.x86_64.rpm
+[ehf@locomoco defender-el8]$
+
+
+##
