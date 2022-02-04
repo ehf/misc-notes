@@ -56,3 +56,7 @@ yum --cve CVE-2021-44142 --advisory RHSA-2022:0328 info updates | grep ^Name
 yum --cve CVE-2021-44142 --advisory RHSA-2022:0328 info updates
 
 
+####
+
+To get an info list of the latest packages which contain fixes for Bugzilla 3595; CVE # CVE-2009-1890 and advisories RHSA-2009:1148-1, use:
+# yum --bz 3595 --cve CVE-2009-1890 --advisory RHSA-2009:1148-1 info updates
