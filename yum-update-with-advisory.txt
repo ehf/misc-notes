@@ -1,0 +1,53 @@
+## 2/4/2022 
+
+# example: using advisory in yum update command 
+
+[h01 ~]$ sudo yum update --advisory  RHSA-2022:0331
+Updating Subscription Management repositories.
+Red Hat Enterprise Linux 8 for x86_64 - AppStream (RPMs)                                            47 kB/s | 2.8 kB     00:00
+Red Hat Enterprise Linux 8 for x86_64 - BaseOS (RPMs)                                               44 kB/s | 2.4 kB     00:00
+Splunk                                                                                              30 kB/s | 2.1 kB     00:00
+Azure CLI                                                                                           39 kB/s | 2.1 kB     00:00
+No security updates needed, but 270 updates available
+Dependencies resolved.
+Nothing to do.
+Complete!
+[h01 ~]$ sudo yum update --advisory  RHSA-2022:0328
+Updating Subscription Management repositories.
+Red Hat Enterprise Linux 8 for x86_64 - AppStream (RPMs)                                            44 kB/s | 2.8 kB     00:00
+Red Hat Enterprise Linux 8 for x86_64 - BaseOS (RPMs)                                               36 kB/s | 2.4 kB     00:00
+Splunk                                                                                              42 kB/s | 2.1 kB     00:00
+Azure CLI                                                                                           45 kB/s | 2.1 kB     00:00
+No security updates needed, but 270 updates available
+Dependencies resolved.
+Nothing to do.
+Complete!
+[h01 ~]$
+[h01 ~]$
+[h01 ~]$ sudo yum update --advisory  RHSA-2022:0332
+Updating Subscription Management repositories.
+Red Hat Enterprise Linux 8 for x86_64 - AppStream (RPMs)                                            54 kB/s | 2.8 kB     00:00
+Red Hat Enterprise Linux 8 for x86_64 - BaseOS (RPMs)                                               40 kB/s | 2.4 kB     00:00
+Splunk                                                                                              41 kB/s | 2.1 kB     00:00
+Azure CLI                                                                                           38 kB/s | 2.1 kB     00:00
+Dependencies resolved.
+===================================================================================================================================
+ Package                         Architecture        Version                      Repository                                  Size
+===================================================================================================================================
+Upgrading:
+ libsmbclient                    x86_64              4.14.5-9.el8_5               rhel-8-for-x86_64-baseos-rpms              148 k
+ libwbclient                     x86_64              4.14.5-9.el8_5               rhel-8-for-x86_64-baseos-rpms              122 k
+ samba-client-libs               x86_64              4.14.5-9.el8_5               rhel-8-for-x86_64-baseos-rpms              5.4 M
+ samba-common                    noarch              4.14.5-9.el8_5               rhel-8-for-x86_64-baseos-rpms              221 k
+ samba-common-libs               x86_64              4.14.5-9.el8_5               rhel-8-for-x86_64-baseos-rpms              174 k
+ samba-common-tools              x86_64              4.14.5-9.el8_5               rhel-8-for-x86_64-baseos-rpms              501 k
+ samba-libs                      x86_64              4.14.5-9.el8_5               rhel-8-for-x86_64-baseos-rpms              170 k
+
+Transaction Summary
+===================================================================================================================================
+Upgrade  7 Packages
+
+Total download size: 6.7 M
+Is this ok [y/N]: 
+
+
