@@ -51,3 +51,8 @@ Total download size: 6.7 M
 Is this ok [y/N]: 
 
 
+#####
+yum --cve CVE-2021-44142 --advisory RHSA-2022:0328 info updates | grep ^Name 
+yum --cve CVE-2021-44142 --advisory RHSA-2022:0328 info updates
+
+
